@@ -12,7 +12,7 @@ public class Banco {
 		empresa.setNome("Alura");
 		
 		Empresa empresa2 = new Empresa();
-		empresa2.setNome("Alura");
+		empresa2.setNome("Quality");
 		
 		lista.add(empresa);
 		lista.add(empresa2);

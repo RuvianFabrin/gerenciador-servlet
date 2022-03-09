@@ -1,17 +1,14 @@
 package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class NovaEmpresaServelet
- */
 @WebServlet("/novaEmpresa")
 public class NovaEmpresaServelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,12 +33,10 @@ public class NovaEmpresaServelet extends HttpServlet {
 		
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
-		PrintWriter out = response.getWriter();
-		out.println("<html>");
-		out.println("<body>");
-		out.println("Cadastrando a empresa: "+nomeEmp);
-		out.println("</body>");
-		out.println("<html>");
+		
+		RequestDispatcher rq =  request.getRequestDispatcher("/novaEmpresaCriada.jsp");
+		request.setAttribute("empresa", empresa.getNome());
+		rq.forward(request, response);
 	}
 
 }
