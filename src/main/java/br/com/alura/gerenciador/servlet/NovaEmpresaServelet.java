@@ -30,6 +30,12 @@ public class NovaEmpresaServelet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Cadastrando nova empresa");
 		String nomeEmp = request.getParameter("nome");
+		
+		Empresa empresa = new Empresa();
+		empresa.setNome(nomeEmp);
+		
+		Banco banco = new Banco();
+		banco.adiciona(empresa);
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<body>");
